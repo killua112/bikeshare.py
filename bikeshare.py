@@ -121,20 +121,16 @@ def user_stats(df,city):
     print('\nCalculating User Stats...\n')
     start_time = time.time()
     # TO DO: Display counts of user types
-    print('User Types is:\n', df['User Type'].ValueCounts())
-    print('The COUNTS USER TYPE :\n{} '.format(df['User Type'].ValueCounts()))
-
+    print('User Types is:\n{} '.format(df['User Type'].ValueCounts()))
     # TO DO: Display counts of gender
     if( city == 'chicago' or city == 'new york city' ):
         print('The COUNTS OF GENDER : \n{} '.format(df['Gender'].ValueCounts()))
-        
         # TO DO: Display earliest, most recent, and most common year of birth
         print('The MOST EARLIEST YEAR : {} '.format(int(df['Birth Year'].min())) )
         print('The MOST RECENT  YEAR : {} '.format(int(df['Birth Year'].max())))
         print('The COMMON YEAR : {} '.format(int(df['Birth Year'].mode()[0])))
     else :
-        print ('Washington has no GENDER or BIRTH YEAR DATA !')
-
+        print ('Washington has no gender or birth year data!')
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
