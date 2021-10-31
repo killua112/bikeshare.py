@@ -136,17 +136,24 @@ def user_stats(df,city):
 
 def main():
     while True:
-        city, month, day = get_filters()
-        df = load_data(city, month, day)
-
+        #getting input data from user city month and day
+        city,month,m,day = get_filters()
+        print ('It seems you are interested about :  \n city : {}\n Month : {}\n Month No : {} \n Day is {}\n'.format(city , month,m ,day))
+        
+        #loading data from csv files 
+        #check  for month
+        if (month == 'all'):
+            df = load_data(city,month, day)
+        else:
+             df = load_data(city,m, day)
         time_stats(df)
         station_stats(df)
         trip_duration_stats(df)
-        user_stats(df)
+        #I provided city for user_stats because washington has no data for gender and birth year
+        user_stats(df,city)
 
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
-            break
-            
+           break
 if __name__ == "__main__":
 	main()
