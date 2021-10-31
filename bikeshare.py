@@ -27,13 +27,14 @@ def get_filters():
 
     # TO DO: get user input for month (all, january, february, ... , june)
 
-     months = { '1' : 'january' , 
+     months = { '1' : 'january', 
                 '2' : 'february',
-                '3' : 'march' ,
-                '4' :  'april', 
-                '5' :  'may' ,
+                '3' : 'march',
+                '4' : 'april', 
+                '5' : 'may',
                 '6' : 'june',
-                '7' : 'all' }
+                '7' : 'all' 
+	      }
     x = 1
     while (x >= 1): 
         num = input("Enter the number of month you interested in or all: \n1-january 2-february 3-march 4-april 5-may 6-june 7-all\n")
