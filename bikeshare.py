@@ -27,13 +27,24 @@ def get_filters():
 
     # TO DO: get user input for month (all, january, february, ... , june)
 
-    while True:
-        month=input('Which month do you want to choice? Januar, February, March, April, May, June, or type all if want to choose all months\n')
-        if month not in ('January', 'February', 'March', 'April', 'May', 'June', 'all'):
-            print("This choice is not exist in our dataset, Try again please: ")
-            continue
-        else:
-            break
+     months = { '1' : 'january' , 
+                '2' : 'february',
+                '3' : 'march' ,
+                '4' :  'april', 
+                '5' :  'may' ,
+                '6' : 'june',
+                '7' : 'all' }
+    x = 1
+    while (x >= 1): 
+        num = input("Enter the number of month you interested in or all: \n1-january 2-february 3-march 4-april 5-may 6-june 7-all\n")
+        if num in months.keys():
+            month = months[num]
+            if(m != 'all'):
+                num = int(num)
+                break
+        else: 
+            print('Please, Enter a valid month number or all: \n')
+            x += 1
     # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
     while True:
         day=input('Which day do you want to choice? Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday or type all if want to choose all days\n')
@@ -44,7 +55,7 @@ def get_filters():
             break
 
     print('-'*40)
-    return day, month, day
+    return city,month,num,day
 
 
 def load_data(city, month, day):
@@ -137,15 +148,15 @@ def user_stats(df,city):
 def main():
     while True:
         #getting input data from user city month and day
-        city,month,m,day = get_filters()
-        print ('It seems you are interested about :  \n city : {}\n Month : {}\n Month No : {} \n Day is {}\n'.format(city , month,m ,day))
+        city,month,num,day = get_filters()
+        print ('You are interested about:\n City: {} Month: {} Month No: {} Day is {}\n'.format(city , month,num,day))
         
         #loading data from csv files 
         #check  for month
         if (month == 'all'):
             df = load_data(city,month, day)
         else:
-             df = load_data(city,m, day)
+             df = load_data(city,num, day)
         time_stats(df)
         station_stats(df)
         trip_duration_stats(df)
